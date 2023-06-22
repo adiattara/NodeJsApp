@@ -29,18 +29,10 @@ jobs:
     - name: Install dependencies
       run: npm ci
     -
-        name: Set up Docker Buildx
-        uses: docker/setup-buildx-action@v2
-    -
-        name: Login to Docker Hub
-        uses: docker/login-action@v2
-        with:
-          username: ${{ secrets.DOCKERHUB_USERNAME }}
-          password: ${{ secrets.DOCKERHUB_TOKEN }}
-    -
-        name: Build and push
-        uses: docker/build-push-action@v4
-        with:
-          context: .
-          push: true
-          tags: node-app:1.0
+      name: Set up Docker Buildx
+      uses: mr-smithers-excellent/docker-build-push@v6
+      with:
+            image: adiattara/node-app:1.0
+            registry: docker.io
+            username: ${{ secrets.DOCKER_USERNAME }}
+            password: ${{ secrets.DOCKER_PASSWORD }}
