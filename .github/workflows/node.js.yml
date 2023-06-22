@@ -32,7 +32,7 @@ jobs:
       name: Set up Docker Buildx
       uses: mr-smithers-excellent/docker-build-push@v6
       with:
-            image: adiattara/node-app:1.0
+            image: adiattara/node-app
             registry: docker.io
             username: ${{ secrets.DOCKER_USERNAME }}
             password: ${{ secrets.DOCKER_PASSWORD }}
