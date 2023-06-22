@@ -28,4 +28,12 @@ jobs:
       run: npm init -y
     - name: Install dependencies
       run: npm ci
-      
+    -
+      name: Set up Docker Buildx
+      uses: mr-smithers-excellent/docker-build-push@v6
+      with:
+            image: adiattara/node-app
+            registry: docker.io
+            dockerfile: ./app/Dockerfile
+            username: ${{ secrets.DOCKER_USERNAME }}
+            password: ${{ secrets.DOCKER_PASSWORD }}
